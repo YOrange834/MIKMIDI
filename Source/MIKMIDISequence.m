@@ -164,6 +164,7 @@ const MusicTimeStamp MIKMIDISequenceLongestTrackLength = -1;
 		}
 		self.internalTracks = tracks;
 		self.length = MIKMIDISequenceLongestTrackLength;
+        self.speed = 1;
 	}
 	
 	return self;

@@ -301,7 +301,7 @@ const MusicTimeStamp MIKMIDISequencerEndOfSequenceLoopEndTimeStamp = -1;
     // Get relevant tempo events
     NSMutableDictionary *allEventsByTimeStamp = [NSMutableDictionary dictionary];
     NSMutableDictionary *tempoEventsByTimeStamp = [NSMutableDictionary dictionary];
-    Float64 overrideTempo = self.tempo;
+    Float64 overrideTempo = self.tempo * sequence.speed;
 
     if (!overrideTempo) {
         NSArray *sequenceTempoEvents = [sequence.tempoTrack eventsOfClass:[MIKMIDITempoEvent class] fromTimeStamp:MAX(fromMusicTimeStamp, 0) toTimeStamp:toMusicTimeStamp];
