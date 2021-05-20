@@ -301,12 +301,12 @@ const MusicTimeStamp MIKMIDISequencerEndOfSequenceLoopEndTimeStamp = -1;
     // Get relevant tempo events
     NSMutableDictionary *allEventsByTimeStamp = [NSMutableDictionary dictionary];
     NSMutableDictionary *tempoEventsByTimeStamp = [NSMutableDictionary dictionary];
-    Float64 overrideTempo = self.tempo * sequence.speed;
+    Float64 overrideTempo = self.tempo * self.timeSpeed;
 
     if (!overrideTempo) {
         NSArray *sequenceTempoEvents = [sequence.tempoTrack eventsOfClass:[MIKMIDITempoEvent class] fromTimeStamp:MAX(fromMusicTimeStamp, 0) toTimeStamp:toMusicTimeStamp];
         for (MIKMIDITempoEvent *tempoEvent in sequenceTempoEvents) {
-            NSNumber *timeStampKey = @(tempoEvent.timeStamp);
+            NSNumber *timeStampKey = @(tempoEvent.timeStamp * self.timeSpeed);
             allEventsByTimeStamp[timeStampKey] = [NSMutableArray arrayWithObject:tempoEvent];
             tempoEventsByTimeStamp[timeStampKey] = tempoEvent;
         }
@@ -314,7 +314,7 @@ const MusicTimeStamp MIKMIDISequencerEndOfSequenceLoopEndTimeStamp = -1;
 
     if (self.needsCurrentTempoUpdate) {
         if (!tempoEventsByTimeStamp.count) {
-            if (!overrideTempo) overrideTempo = [sequence tempoAtTimeStamp:fromMusicTimeStamp];
+            if (!overrideTempo) overrideTempo = [sequence tempoAtTimeStamp:fromMusicTimeStamp] * self.timeSpeed;
             if (!overrideTempo) overrideTempo = kDefaultTempo;
 
             MIKMIDITempoEvent *tempoEvent = [MIKMIDITempoEvent tempoEventWithTimeStamp:fromMusicTimeStamp tempo:overrideTempo];
@@ -817,6 +817,16 @@ const MusicTimeStamp MIKMIDISequencerEndOfSequenceLoopEndTimeStamp = -1;
         if (self.isPlaying) self.needsCurrentTempoUpdate = YES;
     }
 }
+
+-(void)setTimeSpeed:(Float64)timeSpeed{
+    if (timeSpeed <= 0) timeSpeed = 1;
+    if (timeSpeed >= 2) timeSpeed = 2;
+    if (_timeSpeed != timeSpeed) {
+        _timeSpeed = timeSpeed;
+        if (self.isPlaying) self.needsCurrentTempoUpdate = YES;
+    }
+}
+
 
 - (MusicTimeStamp)sequenceLength
 {

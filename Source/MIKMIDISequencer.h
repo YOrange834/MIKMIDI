@@ -288,6 +288,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) Float64 tempo;
 
 /**
+ play speed 播放的倍数
+ */
+@property (nonatomic) Float64 timeSpeed;
+
+/**
  *  The length the that the sequencer should consider its sequence to be. When set to 0, the sequencer
  *  will use sequence.length instead.
  *

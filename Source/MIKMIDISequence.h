@@ -206,8 +206,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (BOOL)setOverallTempo:(Float64)bpm;
 
-@property (nonatomic) Float64 speed;
-
 /**
  *  Inserts a tempo event with the desired tempo in beats per minute (BPM)
  *  into the tempo track at the specified time stamp.
