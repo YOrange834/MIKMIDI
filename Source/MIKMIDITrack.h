@@ -142,7 +142,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)copyEventsFromMIDITrack:(MIKMIDITrack *)origTrack fromTimeStamp:(MusicTimeStamp)startTimeStamp toTimeStamp:(MusicTimeStamp)endTimeStamp andInsertAtTimeStamp:(MusicTimeStamp)destTimeStamp;
 
 /**
- *  Copies MIDI events from one track and merges them into the receiver.
+ *  Copies MIDI events from one track and merges them into the receiver. 【从一个音轨复制MIDI事件，并将它们合并到接收器中。】
  *
  *  @param origTrack The track to copy the events from.
  *  @param startTimeStamp The starting time stamp for the range of the events to copy.
@@ -164,21 +164,21 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) MusicTrack musicTrack;
 
 /**
- *  An array of MIKMIDIEvent containing all of the MIDI events for the track, sorted by timestamp.
+ *  An array of MIKMIDIEvent containing all of the MIDI events for the track, sorted by timestamp. 【MIKMIDIEvent数组，包含轨道的所有MIDI事件，按时间戳排序。】
  *
  *  This property can be observed using Key Value Observing.
  */
 @property (nonatomic, copy) MIKArrayOf(MIKMIDIEvent *) *events;
 
 /**
- *  An array of MIKMIDINoteEvent containing all of the MIDI note events for the track, sorted by timestamp.
+ *  An array of MIKMIDINoteEvent containing all of the MIDI note events for the track, sorted by timestamp. 【MIKMIDINoteEvent数组，其中包含轨道的所有MIDI音符事件，并按时间戳排序。】
  *
  *  This property can be observed using Key Value Observing.
  */
 @property (nonatomic, readonly) MIKArrayOf(MIKMIDINoteEvent *) *notes;
 
 /**
- *  The receiver's index in its containing sequence, or -1 if the track isn't in a sequence.
+ *  The receiver's index in its containing sequence, or -1 if the track isn't in a sequence. 【接收者在其包含序列中的索引；如果轨道不在序列中，则为-1。】
  */
 @property (nonatomic, readonly) NSInteger trackNumber;
 
@@ -211,7 +211,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, getter = isSolo) BOOL solo;
 
 /**
- *  The length of the MIDI track.
+ *  The length of the MIDI track.  【MIDI轨道的长度。】
  *
  *  This property can be observed using Key Value Observing. 
  *
@@ -221,7 +221,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  The time resolution for a sequence of MIDI events. For example, this value can indicate the time resolution that was specified
- *  by the MIDI file used to construct a sequence.
+ *  by the MIDI file used to construct a sequence.  【一系列MIDI事件的时间分辨率。 例如，此值可以指示由用于构建序列的MIDI文件指定的时间分辨率。】
  *
  *  If you create a MIDI sequence programmatically, the value is set to 480. If you create a MIDI sequence from a MIDI file,
  *  the value is set to the time resolution specified in the MIDI file.

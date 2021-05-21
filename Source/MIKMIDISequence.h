@@ -178,27 +178,28 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Tempo & Time Signature
 
 /**
- *  Returns an array of MIKMIDIEvent from the tempo track.
+ *  Returns an array of MIKMIDIEvent from the tempo track. 【从速度轨道返回一个MIKMIDIEvent数组。】
  *
  *  This is a convenience method, and is equivalent to calling -eventsOfClass:fromTimeStamp:toTimeStamp:
  *  on the tempo track with the parameters [MIKMIDIMetaTimeSignatureEvent class], 0, and kMusicTimeStamp_EndOfTrack respectively.
+ *  【这是一种便捷方法，等效于调用-eventsOfClass：fromTimeStamp：toTimeStamp：在速度轨道上分别使用参数[MIKMIDIMetaTimeSignatureEvent class]，0和kMusicTimeStamp_EndOfTrack。】
  *
  *  @return An array of MIKMIDIMetaTimeSignatureEvent.
  */
 - (MIKArrayOf(MIKMIDIMetaTimeSignatureEvent *) *)timeSignatureEvents;
 
 /**
- *  Returns an array of MIKMIDITempoEvent from the tempo track.
+ *  Returns an array of MIKMIDITempoEvent from the tempo track.  【从速度轨道返回一个MIKMIDITempoEvent数组。】
  *
  *  This is a convenience method, and is equivalent to calling -eventsOfClass:fromTimeStamp:toTimeStamp:
  *  on the tempo track with the parameters [MIKMIDITempoEvent class], 0, and kMusicTimeStamp_EndOfTrack respectively.
- *
+ * 【这是一种便捷方法，等效于调用-eventsOfClass：fromTimeStamp：toTimeStamp：在速度轨道上分别使用参数[MIKMIDITempoEvent class]，0和kMusicTimeStamp_EndOfTrack。】
  *  @return An array of MIKMIDITempoEvent.
  */
 - (MIKArrayOf(MIKMIDITempoEvent *) *)tempoEvents;
 
 /**
- *  Removes any existing tempo events and inserts a tempo event with the desired bpm at the beginning of the tempo track.
+ *  Removes any existing tempo events and inserts a tempo event with the desired bpm at the beginning of the tempo track. 【*删除所有现有的速度事件，并在速度轨道的开头插入一个具有所需bpm的速度事件。】
  *
  *  @param bpm The number of beats per minute for the new tempo.
  *
@@ -271,7 +272,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (MIKMIDITimeSignature)timeSignatureAtTimeStamp:(MusicTimeStamp)timeStamp;
 
-#pragma mark - Timing
+#pragma mark - Timing【定时】
 
 
 /** Returns the time in seconds for a given MusicTimeStamp (time in beats) in the sequence.
@@ -317,15 +318,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  The tempo track for the sequence. Even in a new, empty sequence,
- *  this will return a tempo track to which tempo events can be added.
+ *  this will return a tempo track to which tempo events can be added. 【序列的速度轨道。 即使以新的空序列，这也将返回一个速度轨道，可以向其中添加速度事件。】
  */
 @property (nonatomic, readonly) MIKMIDITrack *tempoTrack;
 
 /**
- *  The MIDI music tracks for the sequence. An array of MIKMIDITrack instances.
- *  Does not include the tempo track.
+ *  The MIDI music tracks for the sequence. An array of MIKMIDITrack instances.  【序列的MIDI音乐轨道。 MIKMIDITrack实例的数组。】
+ *  Does not include the tempo track.                                                                           【不包括速度音轨。】
  *
- *  This property can be observed using Key Value Observing.
+ *  This property can be observed using Key Value Observing.  【可以使用键值观察来观察此属性。】
  */
 @property (nonatomic, readonly) MIKArrayOf(MIKMIDITrack *) *tracks;
 
@@ -335,23 +336,23 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) MusicSequence musicSequence;
 
 /**
- *  The length of the sequence as a MusicTimeStamp.
+ *  The length of the sequence as a MusicTimeStamp.  【序列的长度，作为MusicTimeStamp。】
  *
- *  Set to MIKMIDISequenceLongestTrackLength to make the length equal to the length of the longest track.
+ *  Set to MIKMIDISequenceLongestTrackLength to make the length equal to the length of the longest track. 【设置为MIKMIDISequenceLongestTrackLength以使长度等于最长轨道的长度。】
  *
- *  This property can be observed using Key Value Observing.
+ *  This property can be observed using Key Value Observing. 【可以使用键值观察来观察此属性。】
  */
 @property (nonatomic) MusicTimeStamp length;
 
 /**
- *  The duration of the sequence in seconds.
+ *  The duration of the sequence in seconds. 【序列的持续时间（以秒为单位）。】
  *
  *  This property can be observed using Key Value Observing.
  */
 @property (nonatomic, readonly) Float64 durationInSeconds;
 
 /**
- *  The MIDI data that composes the sequence. This data is equivalent to an NSData representation of a standard MIDI file.
+ *  The MIDI data that composes the sequence. This data is equivalent to an NSData representation of a standard MIDI file. 【组成音序的MIDI数据。 此数据等效于标准MIDI文件的NSData表示形式。】
  */
 @property (nonatomic, readonly, nullable) NSData *dataValue;
 
