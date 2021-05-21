@@ -210,4 +210,37 @@
 	return [noteOff copy];
 }
 
+/// 扩充的移调功能
++ (MIKMIDINoteOnCommand *)noteOnCommandFromNoteEvent:(MIKMIDINoteEvent *)noteEvent clock:(MIKMIDIClock *)clock withMove:(SInt8)move
+{
+    MIKMutableMIDINoteOnCommand *noteOn = [[MIKMutableMIDINoteOnCommand alloc] init];
+    MIDITimeStamp timestamp = clock ? [clock midiTimeStampForMusicTimeStamp:noteEvent.timeStamp] : MIKMIDIGetCurrentTimeStamp();
+    noteOn.midiTimestamp = timestamp;
+    noteOn.channel = noteEvent.channel;
+    UInt8 note = noteEvent.note;
+    if (note + move > 0 && note + move < 128) {
+        note = noteEvent.note + move;
+    }
+    noteOn.note = note;
+    noteOn.velocity = noteEvent.velocity;
+    return [noteOn copy];
+}
+
+/// 扩充的移调功能
++ (MIKMIDINoteOffCommand *)noteOffCommandFromNoteEvent:(MIKMIDINoteEvent *)noteEvent clock:(MIKMIDIClock *)clock withMove:(SInt8)move
+{
+    MIKMutableMIDINoteOffCommand *noteOff = [[MIKMutableMIDINoteOffCommand alloc] init];
+    MIDITimeStamp timestamp = clock ? [clock midiTimeStampForMusicTimeStamp:noteEvent.endTimeStamp] : MIKMIDIGetCurrentTimeStamp();
+    noteOff.midiTimestamp = timestamp;
+    noteOff.channel = noteEvent.channel;
+    UInt8 note = noteEvent.note;
+    if (note + move > 0 && note + move < 128) {
+        note = noteEvent.note + move;
+    }
+    noteOff.note = note;
+    noteOff.velocity = noteEvent.releaseVelocity;
+    return [noteOff copy];
+}
+
+
 @end

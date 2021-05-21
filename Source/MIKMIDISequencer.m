@@ -120,6 +120,7 @@ const MusicTimeStamp MIKMIDISequencerEndOfSequenceLoopEndTimeStamp = -1;
         _processingQueueContext = &_processingQueueContext;
         _maximumLookAheadInterval = 0.1;
 		_rate = 1.0;
+        _moveNote = 0;
     }
     return self;
 }
@@ -444,11 +445,13 @@ const MusicTimeStamp MIKMIDISequencerEndOfSequenceLoopEndTimeStamp = -1;
 
     if (event.eventType == MIKMIDIEventTypeMIDINoteMessage) {
         if (destinationEvent.representsNoteOff) {
-            command = [MIKMIDICommand noteOffCommandFromNoteEvent:(MIKMIDINoteEvent *)event clock:clock];
+//            command = [MIKMIDICommand noteOffCommandFromNoteEvent:(MIKMIDINoteEvent *)event clock:clock];
+            command = [MIKMIDICommand noteOffCommandFromNoteEvent:(MIKMIDINoteEvent *)event clock:clock withMove:self.moveNote];
         } else {
             MIKMIDINoteEvent *noteEvent = (MIKMIDINoteEvent *)event;
-            command = [MIKMIDICommand noteOnCommandFromNoteEvent:noteEvent clock:clock];
-
+//            command = [MIKMIDICommand noteOnCommandFromNoteEvent:noteEvent clock:clock];
+            command = [MIKMIDICommand noteOnCommandFromNoteEvent:noteEvent clock:clock withMove:self.moveNote];
+            
             // Add note off to pending note offs
             MusicTimeStamp endTimeStamp = noteEvent.endTimeStamp;
             NSMutableDictionary *pendingNoteOffs = self.pendingNoteOffs;

@@ -485,6 +485,13 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic) NSTimeInterval maximumLookAheadInterval;
 
+
+#pragma mark - 扩充的功能
+
+/// 移调
+@property (nonatomic) SInt8 moveNote;
+
+
 #pragma mark - Deprecated
 
 /**
