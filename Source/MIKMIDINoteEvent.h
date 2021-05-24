@@ -134,6 +134,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 扩充的移调功能
 + (MIKMIDINoteOnCommand *)noteOnCommandFromNoteEvent:(MIKMIDINoteEvent *)noteEvent clock:(MIKMIDIClock *)clock withMove:(SInt8)move;
+
+
+/// 扩充公共能
+/// @param noteEvent event 事件
+/// @param clock 事件
+/// @param move 移调
+/// @param rate 音量
++ (MIKMIDINoteOnCommand *)noteOnCommandFromNoteEvent:(MIKMIDINoteEvent *)noteEvent clock:(MIKMIDIClock *)clock withMove:(SInt8)move velocityRate:(UInt8)rate;
+
 /// 扩充的移调功能
 + (MIKMIDINoteOffCommand *)noteOffCommandFromNoteEvent:(MIKMIDINoteEvent *)noteEvent clock:(MIKMIDIClock *)clock withMove:(SInt8)move;
 @end

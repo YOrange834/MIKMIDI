@@ -227,6 +227,32 @@
 }
 
 /// 扩充的移调功能
++ (MIKMIDINoteOnCommand *)noteOnCommandFromNoteEvent:(MIKMIDINoteEvent *)noteEvent clock:(MIKMIDIClock *)clock withMove:(SInt8)move velocityRate:(UInt8)rate
+{
+    MIKMutableMIDINoteOnCommand *noteOn = [[MIKMutableMIDINoteOnCommand alloc] init];
+    MIDITimeStamp timestamp = clock ? [clock midiTimeStampForMusicTimeStamp:noteEvent.timeStamp] : MIKMIDIGetCurrentTimeStamp();
+    noteOn.midiTimestamp = timestamp;
+    noteOn.channel = noteEvent.channel;
+    UInt8 note = noteEvent.note;
+    if (note + move > 0 && note + move < 128) {
+        note = noteEvent.note + move;
+    }
+    noteOn.note = note;
+    if (rate < 5) {
+        rate = 5;
+    }else if(rate > 20){
+        rate = 20;
+    }
+    UInt8 volume = rate / 10.0 * noteEvent.velocity;
+    if (volume >= 127) {
+        volume = 127;
+    }
+    noteOn.velocity = volume;
+    return [noteOn copy];
+}
+
+
+/// 扩充的移调功能
 + (MIKMIDINoteOffCommand *)noteOffCommandFromNoteEvent:(MIKMIDINoteEvent *)noteEvent clock:(MIKMIDIClock *)clock withMove:(SInt8)move
 {
     MIKMutableMIDINoteOffCommand *noteOff = [[MIKMutableMIDINoteOffCommand alloc] init];

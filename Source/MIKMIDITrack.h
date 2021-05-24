@@ -228,6 +228,13 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, readonly) SInt16 timeResolution;
 
+/// 音量设置  【5-20】之间 初始值为 10，实际使用应该除以 10
+@property (nonatomic) UInt8 velocityRate;
+
+/// 是否播放改调音轨上的数据
+@property (nonatomic) BOOL isShow;
+
+
 #pragma mark - Deprecated
 
 /**

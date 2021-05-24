@@ -53,6 +53,10 @@
 		_internalEvents = [[NSMutableSet alloc] init];
         _musicTrack = musicTrack;
         _sequence = sequence;
+        
+        _velocityRate = 10;
+        _isShow = YES;
+        
 		[self reloadAllEventsFromMusicTrack];
     }
 
@@ -718,6 +722,14 @@
     if (err) NSLog(@"MusicTrackGetProperty() failed with error %@ in %s.", @(err), __PRETTY_FUNCTION__);
     return resolution;
 }
+
+-(UInt8)velocityRate{
+    if (_velocityRate == 0) {
+        _velocityRate = 10;
+    }
+    return _velocityRate;
+}
+
 
 #pragma mark - Deprecated
 

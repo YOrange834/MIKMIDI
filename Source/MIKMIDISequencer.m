@@ -43,6 +43,8 @@ const MusicTimeStamp MIKMIDISequencerEndOfSequenceLoopEndTimeStamp = -1;
 
 @interface MIKMIDIEventWithDestination : NSObject
 @property (nonatomic, strong) MIKMIDIEvent *event;
+/// 音量
+@property (nonatomic) UInt8 volocityRate;
 @property (nonatomic, strong) id<MIKMIDICommandScheduler> destination;
 @property (nonatomic, readonly) BOOL representsNoteOff;
 + (instancetype)eventWithDestination:(id<MIKMIDICommandScheduler>)destination event:(MIKMIDIEvent *)event;
@@ -356,6 +358,9 @@ const MusicTimeStamp MIKMIDISequencerEndOfSequenceLoopEndTimeStamp = -1;
     NSArray *tracksToPlay = soloTracks.count != 0 ? soloTracks : nonMutedTracks;
 
     for (MIKMIDITrack *track in tracksToPlay) {
+        if (!track.isShow) {
+            continue;
+        }
         MusicTimeStamp startTimeStamp = MAX(fromMusicTimeStamp - track.offset, 0);
         MusicTimeStamp endTimeStamp = toMusicTimeStamp - track.offset;
         NSArray *events = [track eventsFromTimeStamp:startTimeStamp toTimeStamp:endTimeStamp];
@@ -375,7 +380,11 @@ const MusicTimeStamp MIKMIDISequencerEndOfSequenceLoopEndTimeStamp = -1;
             if ([event isKindOfClass:[MIKMIDINoteEvent class]] && [(MIKMIDINoteEvent *)event duration] <= 0) continue;
             NSNumber *timeStampKey = @(event.timeStamp);
             NSMutableArray *eventsAtTimeStamp = allEventsByTimeStamp[timeStampKey] ? allEventsByTimeStamp[timeStampKey] : [NSMutableArray array];
-            [eventsAtTimeStamp addObject:[MIKMIDIEventWithDestination eventWithDestination:destination event:event]];
+            // 新增轨道音量功能
+            MIKMIDIEventWithDestination *des = [MIKMIDIEventWithDestination eventWithDestination:destination event:event];
+            des.volocityRate = track.velocityRate;
+            [eventsAtTimeStamp addObject:des];
+            
             allEventsByTimeStamp[timeStampKey] = eventsAtTimeStamp;
         }
     }
@@ -450,7 +459,7 @@ const MusicTimeStamp MIKMIDISequencerEndOfSequenceLoopEndTimeStamp = -1;
         } else {
             MIKMIDINoteEvent *noteEvent = (MIKMIDINoteEvent *)event;
 //            command = [MIKMIDICommand noteOnCommandFromNoteEvent:noteEvent clock:clock];
-            command = [MIKMIDICommand noteOnCommandFromNoteEvent:noteEvent clock:clock withMove:self.moveNote];
+            command = [MIKMIDICommand noteOnCommandFromNoteEvent:noteEvent clock:clock withMove:self.moveNote velocityRate:destinationEvent.volocityRate];
             
             // Add note off to pending note offs
             MusicTimeStamp endTimeStamp = noteEvent.endTimeStamp;
