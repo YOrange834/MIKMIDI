@@ -454,6 +454,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic) MIKMIDISequencerClickTrackStatus clickTrackStatus;
 
+
+@property (copy, nonatomic) void (^metronomeClickBlock)(BOOL isTick);
+
 /**
  *  The tracks to record incoming MIDI events to while recording is enabled. 【*启用了在录制时将传入的MIDI事件录制到的音轨。】
  *

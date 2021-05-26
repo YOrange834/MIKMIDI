@@ -723,12 +723,12 @@
     return resolution;
 }
 
--(UInt8)velocityRate{
-    if (_velocityRate == 0) {
-        _velocityRate = 10;
-    }
-    return _velocityRate;
-}
+//-(UInt8)velocityRate{
+//    if (_velocityRate == 0) {
+//        _velocityRate = 10;
+//    }
+//    return _velocityRate;
+//}
 
 
 #pragma mark - Deprecated

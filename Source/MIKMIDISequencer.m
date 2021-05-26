@@ -884,9 +884,10 @@ const MusicTimeStamp MIKMIDISequencerEndOfSequenceLoopEndTimeStamp = -1;
         if (clickTimeStamp >= fromTimeStamp) {	// ignore if clickTimeStamp is still less than fromTimeStamp (from being floored)
             NSInteger adjustedTimeStamp = clickTimeStamp * timeSignature.denominator / 4.0;
             BOOL isTick = !((adjustedTimeStamp + timeSignature.numerator) % (timeSignature.numerator));
-            MIDINoteMessage clickMessage = isTick ? tickMessage : tockMessage;
-            MIKMIDINoteEvent *noteEvent = [MIKMIDINoteEvent noteEventWithTimeStamp:clickTimeStamp message:clickMessage];
-            [clickEvents addObject:[MIKMIDIEventWithDestination eventWithDestination:metronome event:noteEvent]];
+            !_metronomeClickBlock ? : _metronomeClickBlock(isTick);
+//            MIDINoteMessage clickMessage = isTick ? tickMessage : tockMessage;
+//            MIKMIDINoteEvent *noteEvent = [MIKMIDINoteEvent noteEventWithTimeStamp:clickTimeStamp message:clickMessage];
+//            [clickEvents addObject:[MIKMIDIEventWithDestination eventWithDestination:metronome event:noteEvent]];
         }
 
         clickTimeStamp += 4.0 / timeSignature.denominator;
