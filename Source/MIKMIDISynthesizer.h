@@ -88,6 +88,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (BOOL)loadSoundfontFromFileAtURL:(NSURL *)fileURL error:(NSError **)error;
 
+- (BOOL)loadSoundfontFromFileAtURL:(NSURL *)fileURL error:(NSError **)error presentId:(UInt8)presentId;
+
 + (AudioComponentDescription)appleSynthComponentDescription;
 
 // methods for property 'componentDescription'
