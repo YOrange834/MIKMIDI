@@ -17,42 +17,42 @@
  *  @note Not all of these MIDI message types are currently explicitly supported by MIKMIDI.
  */
 typedef NS_ENUM(NSUInteger, MIKMIDICommandType) {
-	/**  Note off command. */
-	MIKMIDICommandTypeNoteOff = 0x8f,
+	/**  Note off command.  */
+	MIKMIDICommandTypeNoteOff = 0x8f, //【关闭命令】
 	/**  Note on command. */
-	MIKMIDICommandTypeNoteOn = 0x9f,
+	MIKMIDICommandTypeNoteOn = 0x9f,  //【开启命令】
 	/**  Polyphonic key pressure command. */
-	MIKMIDICommandTypePolyphonicKeyPressure = 0xaf,
+	MIKMIDICommandTypePolyphonicKeyPressure = 0xaf,  //【和弦按键压力命令】
 	/**  Control change command. This is the most common command sent by MIDI controllers. */
-	MIKMIDICommandTypeControlChange = 0xbf,
+	MIKMIDICommandTypeControlChange = 0xbf,  //【控制更改命令。这是 MIDI 控制器发送的最常见的命令。】
 	/**  Program change command. */
-	MIKMIDICommandTypeProgramChange = 0xcf,
+	MIKMIDICommandTypeProgramChange = 0xcf,  //【程序更改命令】
 	/**  Channel pressure command. */
-	MIKMIDICommandTypeChannelPressure = 0xdf,
+	MIKMIDICommandTypeChannelPressure = 0xdf,  //【通道压力命令。】
 	/**  Pitch wheel change command. */
-	MIKMIDICommandTypePitchWheelChange = 0xef,
+	MIKMIDICommandTypePitchWheelChange = 0xef,  //【变桨轮改变命令。】
 	/**  System message command. */
-	MIKMIDICommandTypeSystemMessage = 0xff,
+	MIKMIDICommandTypeSystemMessage = 0xff,  //【系统消息命令。】
 	/**  System message command. */
-	MIKMIDICommandTypeSystemExclusive = 0xf0,
+	MIKMIDICommandTypeSystemExclusive = 0xf0,  //【系统消息命令。】
 	/**  System exclusive (SysEx) command. */
-	MIKMIDICommandTypeSystemTimecodeQuarterFrame = 0xf1,
+	MIKMIDICommandTypeSystemTimecodeQuarterFrame = 0xf1,  //【系统独占 (SysEx) 命令。】
 	/**  System song position pointer command. */
-	MIKMIDICommandTypeSystemSongPositionPointer = 0xf2,
+	MIKMIDICommandTypeSystemSongPositionPointer = 0xf2,  //【系统歌曲位置指针命令。】
 	/**  System song select command. */
-	MIKMIDICommandTypeSystemSongSelect = 0xf3,
+	MIKMIDICommandTypeSystemSongSelect = 0xf3,  //【系统歌曲选择命令。】
 	/**  System tune request command. */
-	MIKMIDICommandTypeSystemTuneRequest = 0xf6,
+	MIKMIDICommandTypeSystemTuneRequest = 0xf6,  //【系统调整请求命令。】
 	/**  System timing clock command. */
-	MIKMIDICommandTypeSystemTimingClock = 0xf8,
+	MIKMIDICommandTypeSystemTimingClock = 0xf8,  //【系统定时时钟命令。】
 	/**  System timing clock command. */
-	MIKMIDICommandTypeSystemStartSequence = 0xfa,
+	MIKMIDICommandTypeSystemStartSequence = 0xfa,  //【系统定时时钟命令。】
 	/**  System start sequence command. */
-	MIKMIDICommandTypeSystemContinueSequence = 0xfb,
+	MIKMIDICommandTypeSystemContinueSequence = 0xfb,  //【系统启动序列命令。】
 	/**  System continue sequence command. */
-	MIKMIDICommandTypeSystemStopSequence = 0xfc,
+	MIKMIDICommandTypeSystemStopSequence = 0xfc,  //【系统继续序列命令。】
 	/**  System keep alive message. */
-	MIKMIDICommandTypeSystemKeepAlive = 0xfe,
+	MIKMIDICommandTypeSystemKeepAlive = 0xfe,  //【系统保持活动消息。】
 };
 
 @class MIKMIDIMappingItem;

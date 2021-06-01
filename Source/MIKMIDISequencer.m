@@ -456,10 +456,15 @@ const MusicTimeStamp MIKMIDISequencerEndOfSequenceLoopEndTimeStamp = -1;
         if (destinationEvent.representsNoteOff) {
 //            command = [MIKMIDICommand noteOffCommandFromNoteEvent:(MIKMIDINoteEvent *)event clock:clock];
             command = [MIKMIDICommand noteOffCommandFromNoteEvent:(MIKMIDINoteEvent *)event clock:clock withMove:self.moveNote];
+            
+//            !_playedNoteBlock ? : _playedNoteBlock((MIKMIDINoteEvent *)event)
+            
         } else {
             MIKMIDINoteEvent *noteEvent = (MIKMIDINoteEvent *)event;
 //            command = [MIKMIDICommand noteOnCommandFromNoteEvent:noteEvent clock:clock];
             command = [MIKMIDICommand noteOnCommandFromNoteEvent:noteEvent clock:clock withMove:self.moveNote velocityRate:destinationEvent.volocityRate];
+            
+            !_nowPlayingNoteBlock ? : _nowPlayingNoteBlock(noteEvent.note);
             
             // Add note off to pending note offs
             MusicTimeStamp endTimeStamp = noteEvent.endTimeStamp;

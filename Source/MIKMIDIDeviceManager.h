@@ -53,16 +53,23 @@ extern NSString * const MIKMIDIEndpointKey;
 
 /**
  *  MIKMIDIDeviceManager is used to retrieve devices and virtual endpoints available on the system, 
- *  as well as for connecting to and disconnecting from MIDI endpoints. It is a singleton object.
+ *  as well as for connecting to and disconnecting from MIDI endpoints. It is a singleton object. 【MIKMIDIDeviceManager 用于检索系统上可用的设备和虚拟端点，以及用于连接和断开 MIDI 端点。 它是一个单例对象。】
  *
  *  To get a list of devices available on the system, call -availableDevices. Virtual sources can be
  *  retrieved by calling -virtualSources and -virtualDevices, respectively. All three of these properties,
  *  are KVO compliant, meaning they can be observed using KVO for changes, and (on OS X) can be bound to UI
  *  elements using Cocoa bindings.
+ *  【要获取系统上可用的设备列表，请调用 -availableDevices。】
+ *  【虚拟源可以通过分别调用 -virtualSources 和 -virtualDevices 检索。 这三个属性，是 KVO 兼容的，这意味着可以使用 KVO 观察它们的变化，并且（在 OS X 上）可以绑定到 UI】
  *
  *  MIKMIDIDeviceManager is also used to connect to and disonnect from MIDI endpoints, as well as to send and receive MIDI
  *  messages. To connect to a MIDI source endpoint, call -connectInput:error:eventHandler:. To disconnect, call -disconnectInput:.
  *  To send MIDI messages/commands to an output endpoint, call -sendCommands:toEndpoint:error:.
+ *
+ *  【MIKMIDIDeviceManager也用于连接MIDI端点和从MIDI端点断开连接，以及发送和接收MIDI消息。】
+ *  【要连接到 MIDI 源端点，请调用 -connectInput:error:eventHandler:。】
+ *  【要断开连接，请调用 -disconnectInput:。】
+ *  【要将 MIDI 消息/命令发送到输出端点，请调用 -sendCommands:toEndpoint:error:。】
  */
 @interface MIKMIDIDeviceManager : NSObject
 

@@ -496,6 +496,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 移调
 @property (nonatomic) SInt8 moveNote;
 
+@property (copy, nonatomic) void (^nowPlayingNoteBlock)(UInt8 note);
+
+@property (copy, nonatomic) void (^playedNoteBlock)(UInt8 note);
 
 #pragma mark - Deprecated
 

@@ -21,10 +21,12 @@ NS_ASSUME_NONNULL_BEGIN
  *  MIKMIDIConnectionManager can be used to manage a set of connected devices. It can be configured to automatically
  *  connect to devices as they are added, and disconnect from them as they are removed. It also supports saving
  *  the list of connected to NSUserDefaults and restoring them upon relaunch.
+ *  【MIKMIDIConnectionManager 可用于管理一组连接的设备。 它可以配置为在添加设备时自动连接到设备，并在删除设备时与它们断开连接。 它还支持保存连接到 NSUserDefaults 的列表并在重新启动时恢复它们。】
  *
  *  The use of MIKMIDIConnectionManager is optional. It is meant to be useful in implementing functionality that
  *  many MIDI device enabled apps need. However, simple connection to devices or MIDI endpoints can be done with
  *  MIKMIDIDeviceManager directly, if desired.
+ *  【MIKMIDIConnectionManager 的使用是可选的。 它旨在用于实现许多支持 MIDI 设备的应用程序所需的功能。 但是，如果需要，可以直接使用 MIKMIDIDeviceManager 完成与设备或 MIDI 端点的简单连接。】
  */
 @interface MIKMIDIConnectionManager : NSObject
 

@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Base class for MIDI endpoint objects. Not used directly, rather, in use, instances will always be
  *  instances of MIKMIDISourceEndpoint or MIKMIDIDestinationEndpoint.
+ *  【MIDI 端点对象的基类。 不直接使用，而是在使用中，实例将始终是 MIKMIDISourceEndpoint 或 MIKMIDIDestinationEndpoint 的实例。】
  */
 @interface MIKMIDIEndpoint : MIKMIDIObject
 

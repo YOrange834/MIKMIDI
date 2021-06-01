@@ -23,11 +23,11 @@ NS_ASSUME_NONNULL_BEGIN
 typedef void(^MIKMIDIEventHandlerBlock)(MIKMIDISourceEndpoint *source, MIKArrayOf(MIKMIDICommand *) *commands); // commands in an array of MIKMIDICommands
 
 /**
- *  MIKMIDISourceEndpoint represents a source (input) MIDI endpoint.
+ *  MIKMIDISourceEndpoint represents a source (input) MIDI endpoint. 【MIKMIDISourceEndpoint 表示源（输入）MIDI 端点。】
  *  It is essentially an Objective-C wrapper for instances of CoreMIDI's MIDIEndpoint class
- *  which are kMIDIObjectType_Source type endpoints.
+ *  which are kMIDIObjectType_Source type endpoints. 【它本质上是 CoreMIDI 的 MIDIEndpoint 类实例的 Objective-C 包装器，这些实例是 kMIDIObjectType_Source 类型的端点。】
  *
- *  MIDI source endpoints are contained by MIDI entities, which are in turn contained by MIDI devices.
+ *  MIDI source endpoints are contained by MIDI entities, which are in turn contained by MIDI devices. 【MIDI 源端点包含在 MIDI 实体中，而 MIDI 实体又包含在 MIDI 设备中。】
  *  MIDI sources can be connected in order to receive data from them using MIKMIDIDeviceManager's
  *  -connectInput:error:eventHandler:virtualDestinations method.
  *

@@ -16,21 +16,22 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  MIKMIDIDevice represents a MIDI device such as a DJ controller, MIDI piano keyboard, etc.
- *
- *  Overview
+ *  【MIKMIDIDevice 代表 MIDI 设备，例如 DJ 控制器、MIDI 钢琴键盘等。】
+ *  Overview 【概述】
  *  --------
  *
  *  MIDI devices are for example, DJ controllers, MIDI piano keyboards, etc. For many applications,
  *  being able to discover, connect to, and receive messages from devices is fundamental to their use of MIDI.
  *  Instances of MIKMIDIDevice represent a MIDI device and MIKMIDIDevice includes methods for
  *  retrieving information about the device as well as obtaining its MIDI entities and endpoints in order
- *  to communicate with it.
+ *  to communicate with it. 【对于许多应用程序，能够发现、连接到设备并从设备接收消息是它们使用 MIDI 的基础。MIKMIDIDevice 的实例代表一个 MIDI 设备，并且 MIKMIDIDevice 包括用于检索有关设备的信息，并按顺序获取其MIDI实体和端点与之通信。】
  *
  *  MIDI devices can contain multiple entities, and each entity can contain multiple source and destination
  *  endpoints. Commonly, however, a device will contain only a single entity, which contains a single
  *  source endpoint, and a single destination endpoint.
+ *  【 MID设备可以包含多个实体，每个实体可以包含多个源和目的地端点。然而，通常一个设备将只包含一个实体，该实体包含一个源端点和单个目标端点。】
  *
- *  Retrieving Available Devices
+ *  Retrieving Available Devices 【检索可用设备】
  *  ----------------------------
  *
  *  To retrieve a list of the devices that are available, use -[MIKMIDIDeviceManager availableDevices].
@@ -41,7 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  can be used to "wrap" virtual sources so that it can be used with devices that present solely using virtual
  *  endpoings. See +deviceWithVirtualEndpoints: for more.
  *
- *  Connecting to a Device
+ *  Connecting to a Device 【连接到设备】
  *  ----------------------
  *
  *  To connect a device and start receiving MIDI messages from it, you must first get the source endpoints

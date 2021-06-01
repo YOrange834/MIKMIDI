@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
  *  MIKMIDIInputPort is an Objective-C wrapper for CoreMIDI's MIDIPort class, and is only for source ports.
  *  It is not intended for use by clients/users of of MIKMIDI. Rather, it should be thought of as an
  *  MIKMIDI private class.
+ *  【MIKMIDIInputPort 是 CoreMIDI 的 MIDIPort 类的 Objective-C 包装器，仅用于源端口。】
+ *  【不适用于 MIKMIDI 的客户/用户。 相反，它应该被认为是一个 MIKMIDI 私有类。】
  */
 @interface MIKMIDIInputPort : MIKMIDIPort
 
