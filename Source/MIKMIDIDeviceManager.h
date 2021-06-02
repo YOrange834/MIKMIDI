@@ -156,6 +156,7 @@ extern NSString * const MIKMIDIEndpointKey;
 
 /**
  *  An NSArray containing MIKMIDIDevice instances representing MIDI devices connected to the system.
+ *  【一个包含 MIKMIDIDevice 实例的 NSArray，代表连接到系统的 MIDI 设备。】
  *
  *  This property is Key Value Observing (KVO) compliant, and can be observed
  *  to be notified when devices are connected or disconnected. It is also suitable
@@ -168,6 +169,7 @@ extern NSString * const MIKMIDIEndpointKey;
 
 /**
  *  An NSArray containing MIKMIDISourceEndpoint instances representing virtual MIDI sources (inputs) on the system.
+ *  【包含 MIKMIDISourceEndpoint 实例的 NSArray 代表系统上的虚拟 MIDI 源（输入）。】
  *
  *  This property is Key Value Observing (KVO) compliant, and can be observed
  *  to be notified when  virtual sources appear or disappear. It is also suitable

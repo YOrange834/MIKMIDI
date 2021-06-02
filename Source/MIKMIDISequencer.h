@@ -500,6 +500,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (copy, nonatomic) void (^playedNoteBlock)(UInt8 note);
 
+@property (copy, nonatomic) void (^sendingMIDIData)(NSArray <MIKMIDICommand * > *command);
+
+
 #pragma mark - Deprecated
 
 /**

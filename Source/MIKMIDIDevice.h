@@ -74,14 +74,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MIKMIDIDevice : MIKMIDIObject
 
 /**
- *  Convenience method for creating a "virtual" MIKMIDIDevice instance from one or more virtual endpoints.
+ *  Convenience method for creating a "virtual" MIKMIDIDevice instance from one or more virtual endpoints. 【从一个或多个虚拟端点创建“虚拟” MIKMIDIDevice 实例的便捷方法。】
  *
  *  MIKMIDIDevices typically represent a physical, connected piece of MIDI hardware. However,
  *  some devices (e.g. some Native Instruments DJ controllers) have drivers that present
  *  them as pairs of virtual MIDI endpoints. These devices are not visible using the regular
  *  MIDI device API. To ease supporting them in code expecting to talk to devices, MIMKIDIDevice
  *  instances can be created with pairs of virtual endpoints, resulting in a "virtual" MIKMIDIDevice
- *  instance.
+ *  instance. 【MIKMIDIDevices 通常代表一个物理的、连接的 MIDI 硬件。 但是，某些设备（例如某些 Native Instruments DJ 控制器）具有将它们显示为虚拟 MIDI 端点对的驱动程序。 这些设备在使用常规 MIDI 设备 API 时不可见。 为了在期望与设备通信的代码中轻松支持它们，可以使用成对的虚拟端点创建 MIMKIDIDevice 实例，从而产生“虚拟” MIKMIDIDevice】
  *
  *  MIKMIDIDevice instances created with this method will return YES from their -isVirtual method.
  *
@@ -114,12 +114,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithVirtualEndpoints:(MIKArrayOf(MIKMIDIEndpoint *) *)endpoints;
 
 /**
- *  The manufacturer of the MIDI device.
+ *  The manufacturer of the MIDI device.  【MIDI 设备的制造商。】
  */
 @property (nonatomic, strong, readonly, nullable) NSString *manufacturer;
 
 /**
- *  The model number of the MIDI device.
+ *  The model number of the MIDI device.  【MIDI 设备的型号。】
  */
 @property (nonatomic, strong, readonly, nullable) NSString *model;
 
@@ -127,6 +127,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  An NSArray containing instances of MIKMIDIEntity, representing the entities of the
  *  receiver. Entities contain logically related source and destination endpoints. Often
  *  a device will only have one entity.
+ *  【一个包含 MIKMIDIEntity 实例的 NSArray，代表接收器的实体。 实体包含逻辑相关的源和目标端点。 通常一台设备只有一个实体。】
  */
 @property (nonatomic, strong, readonly) MIKArrayOf(MIKMIDIEntity *) *entities;
 

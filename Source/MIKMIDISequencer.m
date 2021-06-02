@@ -480,7 +480,12 @@ const MusicTimeStamp MIKMIDISequencerEndOfSequenceLoopEndTimeStamp = -1;
         command = [MIKMIDICommand commandFromChannelEvent:(MIKMIDIChannelEvent *)event clock:clock];
     }
 
-    if (command) [self scheduleCommands:@[command] withCommandScheduler:destination];
+//    if (command) [self scheduleCommands:@[command] withCommandScheduler:destination];
+    if (command){
+        [self scheduleCommands:@[command] withCommandScheduler:destination];
+        !_sendingMIDIData ? : _sendingMIDIData(@[command]);
+    }
+
 }
 
 - (void)sendAllPendingNoteOffsWithMIDITimeStamp:(MIDITimeStamp)offTimeStamp
