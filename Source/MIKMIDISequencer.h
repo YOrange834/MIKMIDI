@@ -493,14 +493,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - 扩充的功能
 
+
 /// 移调
 @property (nonatomic) SInt8 moveNote;
 
-@property (copy, nonatomic) void (^nowPlayingNoteBlock)(UInt8 note);
+@property (copy, nonatomic) void (^nowPlayingNoteBlock)(UInt8 note,UInt8 tag);
 
-@property (copy, nonatomic) void (^playedNoteBlock)(UInt8 note);
+@property (copy, nonatomic) void (^playedNoteBlock)(UInt8 note,UInt8 tag);
 
-@property (copy, nonatomic) void (^sendingMIDIData)(NSArray <MIKMIDICommand * > *command);
+/// play block
+@property (copy, nonatomic, nullable) void (^sendingMIDIData)(NSArray <MIKMIDICommand * > *command);
 
 
 #pragma mark - Deprecated

@@ -45,6 +45,8 @@ const MusicTimeStamp MIKMIDISequencerEndOfSequenceLoopEndTimeStamp = -1;
 @property (nonatomic, strong) MIKMIDIEvent *event;
 /// 音量
 @property (nonatomic) UInt8 volocityRate;
+/// 轨道编号
+@property (nonatomic) UInt8 tag;
 @property (nonatomic, strong) id<MIKMIDICommandScheduler> destination;
 @property (nonatomic, readonly) BOOL representsNoteOff;
 + (instancetype)eventWithDestination:(id<MIKMIDICommandScheduler>)destination event:(MIKMIDIEvent *)event;
@@ -357,8 +359,10 @@ const MusicTimeStamp MIKMIDISequencerEndOfSequenceLoopEndTimeStamp = -1;
     // Never play muted tracks. If any non-muted tracks are soloed, only play those. Matches MusicPlayer behavior
     NSArray *tracksToPlay = soloTracks.count != 0 ? soloTracks : nonMutedTracks;
 
+    UInt8 index = 0;
     for (MIKMIDITrack *track in tracksToPlay) {
         if (!track.isShow) {
+            index++;
             continue;
         }
         MusicTimeStamp startTimeStamp = MAX(fromMusicTimeStamp - track.offset, 0);
@@ -383,10 +387,12 @@ const MusicTimeStamp MIKMIDISequencerEndOfSequenceLoopEndTimeStamp = -1;
             // 新增轨道音量功能
             MIKMIDIEventWithDestination *des = [MIKMIDIEventWithDestination eventWithDestination:destination event:event];
             des.volocityRate = track.velocityRate;
+            des.tag = index;
             [eventsAtTimeStamp addObject:des];
             
             allEventsByTimeStamp[timeStampKey] = eventsAtTimeStamp;
         }
+        index++;
     }
 
     // Get click track events
@@ -464,7 +470,7 @@ const MusicTimeStamp MIKMIDISequencerEndOfSequenceLoopEndTimeStamp = -1;
 //            command = [MIKMIDICommand noteOnCommandFromNoteEvent:noteEvent clock:clock];
             command = [MIKMIDICommand noteOnCommandFromNoteEvent:noteEvent clock:clock withMove:self.moveNote velocityRate:destinationEvent.volocityRate];
             
-            !_nowPlayingNoteBlock ? : _nowPlayingNoteBlock(noteEvent.note);
+            !_nowPlayingNoteBlock ? : _nowPlayingNoteBlock(noteEvent.note,destinationEvent.tag);
             
             // Add note off to pending note offs
             MusicTimeStamp endTimeStamp = noteEvent.endTimeStamp;
