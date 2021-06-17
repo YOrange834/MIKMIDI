@@ -289,6 +289,7 @@ const MusicTimeStamp MIKMIDISequencerEndOfSequenceLoopEndTimeStamp = -1;
 
 - (void)processSequenceStartingFromMIDITimeStamp:(MIDITimeStamp)fromMIDITimeStamp
 {
+    !_countDownBlock ? : _countDownBlock();
     MIDITimeStamp toMIDITimeStamp = MIKMIDIGetCurrentTimeStamp() + MIKMIDIClockMIDITimeStampsPerTimeInterval(self.maximumLookAheadInterval);
     if (toMIDITimeStamp < fromMIDITimeStamp) return;
     MIKMIDIClock *clock = self.clock;

@@ -504,6 +504,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// play block
 @property (copy, nonatomic, nullable) void (^sendingMIDIData)(NSArray <MIKMIDICommand * > *command);
 
+@property (copy, nonatomic, nullable) void (^countDownBlock)();
+
+
 
 #pragma mark - Deprecated
 
